@@ -1,0 +1,22 @@
+# Symfony
+/backend/var/
+/backend/vendor/
+/backend/.env
+/backend/public/bundles/
+/backend/public/build/
+/backend/public/uploads/
+
+# Angular
+/frontend/node_modules/
+/frontend/dist/
+/frontend/out-tsc/
+/frontend/coverage/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp

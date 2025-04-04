@@ -1,0 +1,34 @@
+api_login:
+  path: /api/login
+  methods: POST
+  controller: App\Controller\AuthController::login
+
+app_player_index:
+  path: /api/players
+  methods: GET
+  controller: App\Controller\PlayerController::index
+
+app_player_create:
+  path: /api/players
+  methods: POST
+  controller: App\Controller\PlayerController::create
+
+app_player_update:
+  path: /api/players/{id}
+  methods: PUT
+  controller: App\Controller\PlayerController::update
+
+app_player_delete:
+  path: /api/players/{id}
+  methods: DELETE
+  controller: App\Controller\PlayerController::delete
+
+app_player_import:
+  path: /api/players/import
+  methods: POST
+  controller: App\Controller\PlayerController::import
+
+api_register:
+  path: /api/register
+  methods: POST
+  controller: App\Controller\AuthController::register
