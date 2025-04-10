@@ -1,0 +1,42 @@
+<form (submit)="register()" class="centered-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      type="email"
+      [(ngModel)]="email"
+      name="email"
+      required
+      #emailField="ngModel"
+    />
+    <mat-error *ngIf="emailField.invalid && emailField.touched">
+      L'email est requis et doit être un format valide.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Mot de passe</mat-label>
+    <input
+      matInput
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      required
+      #passwordField="ngModel"
+    />
+    <mat-error *ngIf="passwordField.invalid && passwordField.touched">
+      Le mot de passe est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    type="submit"
+    color="primary"
+    [disabled]="!emailField.valid || !passwordField.valid"
+  >
+    S'inscrire
+  </button>
+
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+</form>

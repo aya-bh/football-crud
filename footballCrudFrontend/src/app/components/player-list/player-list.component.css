@@ -1,0 +1,9 @@
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px; /* Optional: Adds some space between the button and the table */
+}
+
+.player-container {
+  margin: 20px;
+}

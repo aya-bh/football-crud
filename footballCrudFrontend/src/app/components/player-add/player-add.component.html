@@ -1,0 +1,87 @@
+<h2 mat-dialog-title>Ajouter un joueur</h2>
+
+<form (ngSubmit)="addPlayer(playerForm)" #playerForm="ngForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Prénom</mat-label>
+    <input
+      matInput
+      [(ngModel)]="player.firstName"
+      name="firstName"
+      required
+      minlength="2"
+      #firstName="ngModel"
+    />
+    <mat-error *ngIf="firstName.invalid && firstName.touched">
+      Prénom requis, doit comporter au moins 2 caractères.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input
+      matInput
+      [(ngModel)]="player.lastName"
+      name="lastName"
+      required
+      minlength="2"
+      #lastName="ngModel"
+    />
+    <mat-error *ngIf="lastName.invalid && lastName.touched">
+      Nom requis, doit comporter au moins 2 caractères.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Position</mat-label>
+    <mat-select [(ngModel)]="player.position" name="position" required>
+      <mat-option value="Attaquant">Attaquant</mat-option>
+      <mat-option value="Défenseur">Défenseur</mat-option>
+      <mat-option value="Milieu">Milieu</mat-option>
+      <mat-option value="Gardien">Gardien</mat-option>
+    </mat-select>
+    <mat-error *ngIf="!player.position">Position requise.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Équipe</mat-label>
+    <input
+      matInput
+      [(ngModel)]="player.team"
+      name="team"
+      required
+      #team="ngModel"
+    />
+    <mat-error *ngIf="team.invalid && team.touched">
+      Équipe requise.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Âge</mat-label>
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="player.age"
+      name="age"
+      required
+      min="18"
+      max="99"
+      #age="ngModel"
+    />
+    <mat-error *ngIf="age.invalid && age.touched">
+      Âge requis entre 18 et 99 ans.
+    </mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close()">Annuler</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="playerForm.invalid"
+    >
+      Ajouter
+    </button>
+  </div>
+</form>

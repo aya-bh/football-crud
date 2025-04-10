@@ -1,0 +1,65 @@
+<div class="player-container">
+  <h2>Liste des Joueurs de Football</h2>
+
+  <!-- Button to add a new player -->
+  <div class="button-container">
+    <!-- Add Player Button -->
+    <button mat-raised-button color="primary" (click)="openAddPlayerDialog()">
+      Ajouter un joueur
+    </button>
+    
+    <!-- Import Players Button -->
+    <button mat-raised-button color="accent" (click)="openImportDialog()">
+      Importer les joueurs
+    </button>
+  </div>
+
+
+  <!-- Table to display players -->
+  <table mat-table [dataSource]="displayedPlayers" class="mat-elevation-z8">
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>Prénom</th>
+      <td mat-cell *matCellDef="let player">{{ player.firstName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Nom</th>
+      <td mat-cell *matCellDef="let player">{{ player.lastName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>Position</th>
+      <td mat-cell *matCellDef="let player">{{ player.position }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="team">
+      <th mat-header-cell *matHeaderCellDef>Équipe</th>
+      <td mat-cell *matCellDef="let player">{{ player.team }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let player">
+        <button mat-icon-button (click)="openEditPlayerDialog(player.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deletePlayer(player.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Table header and rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <!-- MatPaginator for pagination -->
+  <mat-paginator
+    [length]="totalPlayers"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25]"
+    (page)="onPageChange($event)"
+  >
+  </mat-paginator>
+</div>
